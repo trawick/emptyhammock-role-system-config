@@ -1,0 +1,10 @@
+---
+- name: Allow desired services through firewall
+  ufw: rule=allow port={{ item }}
+  with_items:
+    - ssh
+    - http
+    - https
+
+- name: Enable UFW, deny ports by default
+  ufw: state=enabled policy=deny
